@@ -8,27 +8,28 @@ namespace todoproject
 {
     internal class Todo
     {
-        public int Id { get; set; }
         public string Task { get; set; }
         public bool IsComplete { get; set; }
 
+        public int Priority { get; set; }
 
-        public Todo(int id, string task, bool isComplete)
+        public DateTime DueDate { get; set; }
+
+
+        public Todo(string task, int priority, DateTime dueDate)
         {
-            Id = id;
             Task = task;
-            IsComplete = isComplete;
+            Priority = priority;
+            DueDate = dueDate;
         }
 
-        public bool isTaskComplete()
+        public bool isTaskCompleted()
         {
             return this.IsComplete;
         }
-
-        public override string ToString()
+        public void markAsComplete()
         {
-            return $"(#{this.Id}) {this.Task}";
+            this.IsComplete = !this.IsComplete;
         }
-      
     }
 }
